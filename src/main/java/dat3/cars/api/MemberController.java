@@ -61,7 +61,7 @@ public class MemberController {
   //Security Admin, but when using security whe can get the username for the "logged in" user and let him edit himself
   @GetMapping(path = "/{username}")
   public MemberResponse getMemberById(@PathVariable String username) throws Exception { //Obviously we need to be able to limit this in a system with thousands of members
-     MemberResponse response = memberService.findMemberByUsername(username);
+     MemberResponse response = memberService.getMemberByUsername(username);
      return response;
   }
 

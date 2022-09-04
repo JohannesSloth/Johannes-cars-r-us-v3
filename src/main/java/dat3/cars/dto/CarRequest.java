@@ -23,6 +23,13 @@ public class CarRequest {
         return new Car(c.getId(), c.getBrand(), c.getModel(), c.getPricePrDay(), c.bestDiscount, c.getCreated(), c.getEdited());
     }
 
+    public CarRequest(String brand, String model, double pricePrDay, double bestDiscount) {
+        this.brand = brand;
+        this.model = model;
+        this.pricePrDay = pricePrDay;
+        this.bestDiscount = bestDiscount;
+    }
+
     public CarRequest(Car c) {
         this.id = c.getId();
         this.brand = c.getBrand();

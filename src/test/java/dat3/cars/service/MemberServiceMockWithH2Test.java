@@ -59,7 +59,7 @@ class MemberServiceMockWithH2Test {
     MemberRequest request = new MemberRequest(new Member("m1", "pw", "m1@a.dk", "aa", "aaa", "xxxx", "yyyy", "2000"));
     memberService.editMember(request,"m1");
     //find m1 and verify that address has been changed
-    MemberResponse response = memberService.findMemberByUsername("m1");
+    MemberResponse response = memberService.getMemberByUsername("m1");
     assertEquals("xxxx", response.getStreet());
     assertEquals("yyyy", response.getCity());
     assertEquals("2000", response.getZip());
@@ -74,12 +74,12 @@ class MemberServiceMockWithH2Test {
 
   @Test
   void findMemberByUsername() throws Exception {
-    MemberResponse response = memberService.findMemberByUsername("m1");
+    MemberResponse response = memberService.getMemberByUsername("m1");
     assertEquals("m1@a.dk",response.getEmail());
   }
   @Test
   void findMemberByNotExistingUsername() throws Exception {
-    ResponseStatusException ex = Assertions.assertThrows(ResponseStatusException.class,()-> memberService.findMemberByUsername("i-dont-exist"));
+    ResponseStatusException ex = Assertions.assertThrows(ResponseStatusException.class,()-> memberService.getMemberByUsername("i-dont-exist"));
     assertEquals(HttpStatus.NOT_FOUND, ex.getStatus());
   }
 

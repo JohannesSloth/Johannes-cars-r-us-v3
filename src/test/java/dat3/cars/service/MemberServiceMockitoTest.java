@@ -72,7 +72,7 @@ class MemberServiceMockitoTest {
     Mockito.when(memberRepository.findById("m1")).thenReturn(Optional.of(m));
 
     //Test memberService with mocked repository
-    MemberResponse response = memberService.findMemberByUsername("m1");
+    MemberResponse response = memberService.getMemberByUsername("m1");
     assertEquals("m1@a.dk",response.getEmail());
   }
 
@@ -80,7 +80,7 @@ class MemberServiceMockitoTest {
   void findMemberByUsernameThrowsTest() throws Exception {
     Mockito.when(memberRepository.findById("i-dont-exist")).thenReturn(Optional.empty());
     //Test memberService throws with mocked repository
-    ResponseStatusException ex = Assertions.assertThrows(ResponseStatusException.class,()-> memberService.findMemberByUsername("i-dont-exist"));
+    ResponseStatusException ex = Assertions.assertThrows(ResponseStatusException.class,()-> memberService.getMemberByUsername("i-dont-exist"));
     assertEquals(HttpStatus.NOT_FOUND, ex.getStatus());
   }
 

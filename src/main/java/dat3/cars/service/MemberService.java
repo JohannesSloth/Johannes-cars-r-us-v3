@@ -63,7 +63,7 @@ public class MemberService {
     return response;
   }
 
-  public MemberResponse findMemberByUsername(@PathVariable String username) throws Exception {
+  public MemberResponse getMemberByUsername(@PathVariable String username) throws Exception {
     Member found = memberRepository.findById(username).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
     return new MemberResponse(found,false);
   }
