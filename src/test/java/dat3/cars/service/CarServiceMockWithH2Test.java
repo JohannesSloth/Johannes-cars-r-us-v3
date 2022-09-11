@@ -26,8 +26,18 @@ public class CarServiceMockWithH2Test {
     public static void initTestData(@Autowired CarRepository car_Repository){
         carRepository = car_Repository;
         carRepository.deleteAll();
-        Car car1 = new Car("Honda","Civic", 600, 50);
-        Car car2 = new Car("Lada", "5000", 300, 20);
+        Car car1 = Car.builder()
+                .brand("Honda")
+                .model("Civic")
+                .pricePrDay(500)
+                .bestDiscount(20)
+                .build();
+        Car car2 = Car.builder()
+                .brand("VW")
+                .model("Passat")
+                .pricePrDay(200)
+                .bestDiscount(25)
+                .build();;
         car1 = carRepository.save(car1);
         car2 = carRepository.save(car2);
         car1Id = car1.getId();

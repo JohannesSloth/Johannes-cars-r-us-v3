@@ -20,7 +20,7 @@ public class CarRequest {
     LocalDateTime edited;
 
     public static Car getCarEntity(CarRequest c){
-        return new Car(c.getId(), c.getBrand(), c.getModel(), c.getPricePrDay(), c.bestDiscount, c.getCreated(), c.getEdited());
+        return new Car(c.getId(), c.getBrand(), c.getModel(), c.getPricePrDay(), c.getBestDiscount());
     }
 
     public CarRequest(String brand, String model, double pricePrDay, double bestDiscount) {
@@ -36,7 +36,7 @@ public class CarRequest {
         this.model = c.getModel();
         this.pricePrDay = c.getPricePrDay();
         this.bestDiscount = c.getBestDiscount();
-        this.created = c.getCreated();
-        this.edited = c.getEdited();
+        //this.created = c.getCreated();
+        //this.edited = c.getEdited();
     }
 }

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,8 +30,15 @@ public class MemberResponse {
   LocalDateTime edited;
   Integer ranking;
 
+  List<ReservationResponse> reservations = new ArrayList<>();
+
   //Convert Member Entity to Member DTO
   public MemberResponse(Member m, boolean includeAll) {
+    for (int i = 0; i < m.getReservations().size(); i++) {
+      ReservationResponse res = new ReservationResponse(m.getReservations().get(i));
+      reservations.add(res);
+    }
+
     this.username = m.getUsername();
     this.email = m.getEmail();
     this.street = m.getStreet();
@@ -37,6 +46,7 @@ public class MemberResponse {
     this.lastName = m.getLastName();
     this.city = m.getCity();
     this.zip = m.getZip();
+
     if(includeAll){
       this.created = m.getCreated();
       this.edited = m.getEdited();
