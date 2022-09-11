@@ -20,6 +20,7 @@ public class ReservationResponse {
     int id;
     String username;
     int carId;
+    String brand;
 
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
@@ -33,6 +34,7 @@ public class ReservationResponse {
         this.rentalDate = r.getRentalDate();
         this.username = r.getMember().getUsername();
         this.carId = r.getCar().getId();
+        this.brand = r.getCar().getBrand();
     }
 
 
