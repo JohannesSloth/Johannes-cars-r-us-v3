@@ -7,15 +7,13 @@ import dat3.cars.repository.MemberRepository;
 import dat3.cars.service.ReservationService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/reservations")
 public class ReservationController {
